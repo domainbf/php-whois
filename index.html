@@ -30,21 +30,21 @@
 
         .result-container {
             scrollbar-width: thin;
-            scrollbar-color: #4B5563 #E5E7EB;
+            scrollbar-color: #64748B #F3F4F6;
         }
 
         .result-container::-webkit-scrollbar {
-            width: 12px;
+            width: 10px;
         }
 
         .result-container::-webkit-scrollbar-track {
-            background: #E5E7EB;
+            background: #F3F4F6;
         }
 
         .result-container::-webkit-scrollbar-thumb {
-            background-color: #4B5563;
+            background-color: #64748B;
             border-radius: 20px;
-            border: 3px solid #E5E7EB;
+            border: 2px solid #F3F4F6;
         }
 
         .history-card {
@@ -55,7 +55,7 @@
 
         .history-card>div {
             scrollbar-width: thin;
-            scrollbar-color: #4B5563 #E5E7EB;
+            scrollbar-color: #64748B #F3F4F6;
         }
 
         .history-card>div::-webkit-scrollbar {
@@ -63,13 +63,13 @@
         }
 
         .history-card>div::-webkit-scrollbar-track {
-            background: #E5E7EB;
+            background: #F3F4F6;
         }
 
         .history-card>div::-webkit-scrollbar-thumb {
-            background-color: #4B5563;
+            background-color: #64748B;
             border-radius: 20px;
-            border: 2px solid #E5E7EB;
+            border: 2px solid #F3F4F6;
         }
 
         .watermark {
@@ -86,8 +86,7 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #4B5563;
-            /* Tailwind's gray-600 */
+            background-color: #64748B;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
@@ -101,6 +100,10 @@
             right: 10px;
         }
 
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
         @media (max-width: 640px) {
             .result-container {
                 padding-bottom: 65px;
@@ -112,7 +115,7 @@
     <!-- date: 2024-09-07  -->
 </head>
 
-<body class="bg-gray-100 flex justify-center p-0 sm:p-4 h-screen">
+<body class="bg-gray-100 flex justify-center p-0 sm:p-4 h-screen font-sans">
     <div class="language-switcher">
         <select id="languageSelect"
             class="bg-white border border-gray-300 rounded-md text-gray-700 py-1 px-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
@@ -124,8 +127,8 @@
         </select>
     </div>
     <div class="flex flex-grow max-w-5xl w-full">
-        <div class="bg-white p-2 sm:p-6 md:p-8 rounded-lg shadow-md flex flex-col w-full h-full">
-            <h1 class="text-2xl sm:text-3xl font-bold text-left sm:text-center mb-4 sm:mb-6 text-gray-800"
+        <div class="bg-white p-2 sm:p-6 md:p-8 rounded-lg card-shadow flex flex-col w-full h-full">
+            <h1 class="text-2xl sm:text-3xl font-semibold text-left sm:text-center mb-4 sm:mb-6 text-gray-800"
                 data-i18n="title">WHOIS 查询</h1>
             <form id="whois-form" class="mb-4">
                 <div class="flex relative">
@@ -161,7 +164,7 @@
             </div>
         </div>
 
-        <div id="history" class="history-card bg-white shadow-md ml-0 sm:ml-4 hidden sm:flex flex-col">
+        <div id="history" class="history-card bg-white shadow-md ml-0 sm:ml-4 hidden sm:flex flex-col card-shadow">
             <h2 class="text-lg font-semibold p-4 text-gray-800" data-i18n="recentSearches">最近查询</h2>
             <div class="flex-grow overflow-y-auto px-4 pb-4">
                 <ul id="history-list" class="space-y-2"></ul>
@@ -327,9 +330,9 @@
 
                 // 生成重要信息HTML
                 let importantInfoHtml = `
-                    <div id="importantInfoCard" class="bg-blue-50 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6 relative">
+                    <div id="importantInfoCard" class="bg-blue-50 rounded-lg p-2 sm:p-4 mb-4 sm:mb-6 relative card-shadow">
                         <div class="flex justify-between items-center mb-2 sm:mb-3">
-                            <h3 class="text-lg font-bold text-blue-700" data-i18n="whoisOverview">WHOIS 信息概览</h3>
+                            <h3 class="text-lg font-semibold text-blue-700" data-i18n="whoisOverview">WHOIS 信息概览</h3>
                             <button id="saveScreenshot" class="text-blue-600 hover:text-blue-800 focus:outline-none">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -353,7 +356,7 @@
 
                 // 生成原始信息的HTML
                 let originalInfoHtml = `
-                    <div class="bg-gray-50 rounded-lg p-2 sm:p-4">
+                    <div class="bg-gray-50 rounded-lg p-2 sm:p-4 card-shadow">
                         <div class="flex justify-between items-center mb-2 sm:mb-3">
                             <h3 class="text-lg font-bold text-gray-700" data-i18n="originalWhois">WHOIS 原始信息</h3>
                             <button id="copyOriginalInfo" class="text-blue-600 hover:text-blue-800 focus:outline-none" data-clipboard-target="#originalInfoContent">
@@ -371,41 +374,35 @@
 
             // 添加这个新函数来转换时间为 UTC+8
             function convertToUTC8(dateString) {
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) {
-        console.warn("无效日期格式:", dateString); // 日志记录
-        return dateString; // 如果日期无效，返回原始字符串
-    }
-    const utc8Date = new Date(date.getTime() + (8 * 60 * 60 * 1000));
-    return utc8Date.toISOString().replace('T', ' ').replace(/\.\d{3}Z$/, ' (UTC+8)');
-}
+                const date = new Date(dateString);
+                if (isNaN(date.getTime())) {
+                    return dateString; // 如果日期无效，返回原始字符串
+                }
+                const utc8Date = new Date(date.getTime() + (8 * 60 * 60 * 1000));
+                return utc8Date.toISOString().replace('T', ' ').replace(/\.\d{3}Z$/, ' (UTC+8)');
+            }
 
-function calculatePeriod(dateString, type) {
-    if (!dateString) return '';
+            function calculatePeriod(dateString, type) {
+                 if (!dateString) return '';
 
-    const date = new Date(dateString);
-    if (isNaN(date.getTime())) { // 确保日期有效
-        return ''; // 日期无效时返回空字符串
-    }
+                const date = new Date(dateString);
+                if (isNaN(date)) return '';
+                const currentDate = new Date();
+                 const diffTime = Math.abs(type === 'remainingTime' ? date - currentDate : currentDate - date);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    const currentDate = new Date();
-    const diffTime = Math.abs(type === 'remainingTime' ? date - currentDate : currentDate - date);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    let time, unit;
-    if (diffDays >= 365) {
-        time = Math.floor(diffDays / 365);
-        unit = 'years';
-    } else if (diffDays >= 30) {
-        time = Math.floor(diffDays / 30);
-        unit = 'months';
-    } else {
-        time = diffDays;
-        unit = 'days';
-    }
-
-    return `<span class="inline-flex items-center justify-center text-xs text-white bg-${type === 'remainingTime' ? 'green' : 'blue'}-600 rounded px-1 ml-1 align-middle" style="height: 1.5em; line-height: 1;" data-i18n="${type}" data-time="${time}" data-unit="${unit}"></span>`;
-}
+                let time, unit;
+                if (diffDays >= 365) {
+                    time = Math.floor(diffDays / 365);
+                    unit = 'years';
+                } else if (diffDays >= 30) {
+                    time = Math.floor(diffDays / 30);
+                    unit = 'months';
+                } else {
+                    time = diffDays;
+                    unit = 'days';
+                }
 
                 return `<span class="inline-flex items-center justify-center text-xs text-white bg-${type === 'remainingTime' ? 'green' : 'blue'}-600 rounded px-1 ml-1 align-middle" style="height: 1.5em; line-height: 1;" data-i18n="${type}" data-time="${time}" data-unit="${unit}"></span>`;
             }
@@ -422,7 +419,7 @@ function calculatePeriod(dateString, type) {
             function renderHistory(history) {
                 const historyHtml = history.length
                     ? history.map(item => `
-                        <li class="bg-gray-50 p-2 rounded-md">
+                        <li class="bg-gray-50 p-2 rounded-md card-shadow">
                             <span class="text-xs sm:text-sm text-gray-600 block mb-1">${item}</span>
                             <button class="search-again text-xs text-indigo-600 hover:text-indigo-800" data-domain="${item}" data-i18n="searchAgain">再次查询</button>
                         </li>
@@ -473,7 +470,7 @@ function calculatePeriod(dateString, type) {
                 });
             }
 
-            function handleSaveScreenshot() {
+             function handleSaveScreenshot() {
                 const element = document.getElementById('importantInfoCard');
                 const currentDomain = window.location.hostname;
                 const currentQueryDomain = $('#domain').val().trim();
@@ -543,14 +540,14 @@ function calculatePeriod(dateString, type) {
                 toggleClearButton();
             }
 
-            function handleGlobalKeydown(e) {
+             function handleGlobalKeydown(e) {
                 if (e.key === 'Delete') {
                     e.preventDefault();
                     clearInput();
                 }
             }
 
-            function initI18n() {
+             function initI18n() {
                 const userLang = navigator.language || navigator.userLanguage; // 获取浏览器语言
                 const defaultLang = ['zh-CN', 'zh-TW', 'en', 'ru', 'es'].includes(userLang) ? userLang : 'zh-CN'; // 检查是否支持该语言，不支持则默认 'zh-CN'
 
